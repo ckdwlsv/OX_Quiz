@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "users")
+@Table
 @Getter
 @Setter
 @Builder
@@ -36,11 +36,11 @@ public class Member extends com.my.ox_quiz.member.entity.QuizBaseEntity {
     private Integer answerTrue;
     private Integer answerFalse;
 
-    @OneToMany(mappedBy="user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy="member", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Quiz> quizzes = new ArrayList<>();
 
     public void addQuiz(Quiz quiz) {
         quizzes.add(quiz);
-        quiz.setUser(this);
+        quiz.setMember(this);
     }
 }

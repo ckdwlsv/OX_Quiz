@@ -27,7 +27,7 @@
             </p>
 
             <div class="d-flex gap-3 justify-content-center"
-            th:if="${session.user == null}">
+            th:if="${session.member == null}">
 
                 <a
                         href="/member/login"
@@ -44,14 +44,14 @@
             </div>
 
             <div class="mt-5 text-muted"
-            th:if="${session.user != null}">
+            th:if="${session.member != null}">
 
-                <s th:if="${session.user.role == 'PENDING'}">
+                <s th:if="${session.member.role == 'PENDING'}">
                     일반 회원은 관리자 승인 후 로그인 가능합니다.
                 </s>
 
-                <p th:if="${session.user.role == 'USER' || session.user.role == 'ADMIN'}">
-                    관리자 계정 : <span th:text="${session.user.rloe}">root / admin</span>
+                <p th:if="${session.member.role == 'USER' || session.member.role == 'ADMIN'}">
+                    관리자 계정 : <span th:text="${session.member.rloe}">root / admin</span>
                 </p>
 
             </div>

@@ -22,6 +22,6 @@ public class Quiz extends QuizBaseEntity {
     private boolean answer;
     private String writer;
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    private Member user;
+    @JoinColumn(name = "member_id")
+    private Member member;
 }
