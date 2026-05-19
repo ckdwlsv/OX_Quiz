@@ -16,12 +16,12 @@ public class MemberService {
     private final BCryptPasswordEncoder passwordEncoder;
 
     public void join(MemberDto dto){
-        Member user = new Member();
-        user.setId(dto.getId());
-        user.setPassword(passwordEncoder.encode(dto.getPassword()));
-        user.setAnswerTrue(dto.getAnswerTrue());
-        user.setAnswerFalse(dto.getAnswerFalse());
-        memberRepository.save(user);
+        Member member = new Member();
+        member.setId(dto.getId());
+        member.setPassword(passwordEncoder.encode(dto.getPassword()));
+        member.setAnswerTrue(dto.getAnswerTrue());
+        member.setAnswerFalse(dto.getAnswerFalse());
+        memberRepository.save(member);
     }
 
     public List<MemberDto> findAll(){

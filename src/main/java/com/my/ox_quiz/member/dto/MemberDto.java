@@ -24,18 +24,17 @@ public class MemberDto {
     private LocalDateTime updatedAt;
 
 
-    public static MemberDto toDto(Member user) {
+    public static MemberDto toDto(Member member) {
         return new MemberDto(
-                user.getNo(),
-                user.getId(),
-                user.getPassword(),
-                user.getRole(),
-                user.getStatus(),
-                user.getAnswerTrue(),
-                user.getAnswerFalse(),
-                user.getCreatedAt(),
-                user.getUpdatedAt()
-
+                member.getNo(),
+                member.getId(),
+                member.getPassword(),
+                member.getRole(),
+                member.getStatus(),
+                member.getAnswerTrue(),
+                member.getAnswerFalse(),
+                member.getCreatedAt(),
+                member.getUpdatedAt()
         );
     }
 
