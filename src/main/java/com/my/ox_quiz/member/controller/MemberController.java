@@ -33,11 +33,6 @@ public class MemberController {
         return "join";
     }
 
-    @GetMapping("/update")
-    public String update() {
-        return "update";
-    }
-
     @GetMapping("/my-page")
     public String myPage() {
         return "my-page";
@@ -49,9 +44,14 @@ public class MemberController {
     }
 
     @PostMapping("/join")
-    public String join(@ModelAttribute("dto") MemberDto dto) {
-        memberService.join(dto);
-        return "redirect:/member/login";
+    public String join(@ModelAttribute("dto") MemberDto dto, Model model) {
+        try{
+            memberService.join(dto);
+            return "redirect:/member/login";
+        } catch(IllegalArgumentException e) {
+            model.addAttribute("message", e.getMessage());
+            return "join";
+        }
     }
 
     @PostMapping("/login")
@@ -61,6 +61,7 @@ public class MemberController {
             session.setAttribute("member", loginDto);
             return "redirect:/member/index";
         } else {
+            session.setAttribute("message","아이디 또는 비밀번호가 틀렸습니다.");
             return "redirect:/member/login";
         }
     }

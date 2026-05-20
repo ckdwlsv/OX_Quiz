@@ -8,6 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -16,6 +17,10 @@ public class MemberService {
     private final BCryptPasswordEncoder passwordEncoder;
 
     public void join(MemberDto dto){
+        Optional<Member> existing = memberRepository.findById(dto.getId());
+        if(existing.isPresent()){
+            throw new IllegalArgumentException("이미 존재하는 사용자입니다.");
+        }
         Member member = new Member();
         member.setId(dto.getId());
         member.setPassword(passwordEncoder.encode(dto.getPassword()));

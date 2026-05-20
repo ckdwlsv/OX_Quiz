@@ -11,21 +11,18 @@
 <body>
 
 <div class="container mt-5">
-
     <div class="card shadow-sm mx-auto" style="max-width: 500px;">
-
         <div class="card-header fw-bold">
             로그인
         </div>
 
         <div class="card-body">
-
-            <div class="alert alert-danger">
-                아이디 또는 비밀번호가 틀렸습니다.
+            <div th:if="${session.message != null}" class="alert alert-danger">
+                <span th:text="${session.message}">
+	                아이디 또는 비밀번호가 틀렸습니다.
+                </span>
             </div>
-
             <form th:action="@{/member/login}" method="post">
-
                 <div class="mb-3">
                     <label class="form-label">아이디</label>
                     <input
@@ -34,7 +31,6 @@
                             class="form-control"
                             required>
                 </div>
-
                 <div class="mb-3">
                     <label class="form-label">비밀번호</label>
                     <input
@@ -43,23 +39,17 @@
                             class="form-control"
                             required>
                 </div>
-
                 <button
                         type="submit"
                         class="btn btn-primary w-100">
                     로그인
                 </button>
-
             </form>
-
             <div class="text-center mt-3">
                 <a href="/member/join">회원가입</a>
             </div>
-
         </div>
     </div>
-
 </div>
-
 </body>
 </html>
