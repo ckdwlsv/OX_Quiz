@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MemberController {
     private final MemberService memberService;
 
-    @GetMapping({"/","/index"})
+    @GetMapping({"","/","/index"})
     public String index() {
         return "index";
     }
@@ -33,6 +33,21 @@ public class MemberController {
         return "join";
     }
 
+    @GetMapping("/update")
+    public String update() {
+        return "update";
+    }
+
+    @GetMapping("/my-page")
+    public String myPage() {
+        return "my-page";
+    }
+
+    @GetMapping("/member-list")
+    public String memberList() {
+        return "member-list";
+    }
+
     @PostMapping("/join")
     public String join(@ModelAttribute("dto") MemberDto dto) {
         memberService.join(dto);
@@ -43,10 +58,16 @@ public class MemberController {
     public String login(MemberDto dto, HttpSession session) {
         MemberDto loginDto = memberService.login(dto);
         if (loginDto != null) {
-            session.setAttribute("user", loginDto);
+            session.setAttribute("member", loginDto);
             return "redirect:/member/index";
         } else {
             return "redirect:/member/login";
         }
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/member/index";
     }
 }

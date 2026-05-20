@@ -31,7 +31,7 @@ public class Member extends com.my.ox_quiz.member.entity.QuizBaseEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private StatusType status = StatusType.PENDING;
+    private MemberStatus status = MemberStatus.PENDING;
 
     private Integer answerTrue;
     private Integer answerFalse;

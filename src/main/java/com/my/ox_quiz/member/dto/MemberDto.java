@@ -1,7 +1,7 @@
 package com.my.ox_quiz.member.dto;
 
 import com.my.ox_quiz.member.entity.RoleType;
-import com.my.ox_quiz.member.entity.StatusType;
+import com.my.ox_quiz.member.entity.MemberStatus;
 import com.my.ox_quiz.member.entity.Member;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,7 +17,7 @@ public class MemberDto {
     private String id;
     private String password;
     private RoleType role;
-    private StatusType status;
+    private MemberStatus status;
     private int answerTrue;
     private int answerFalse;
     private LocalDateTime createdAt;
